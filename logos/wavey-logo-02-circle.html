@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>WAVEY Logo 02</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#e9e7e1;font-family:Inter,sans-serif;color:#111}
+h1{font:900 22px Inter;margin:28px 32px 4px;letter-spacing:1px}
+p.sub{margin:0 32px 18px;font-size:12px;color:#555}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 32px 32px}
+.card{border-radius:6px;overflow:hidden;background:#fff}
+.card svg{display:block;width:100%;height:auto}
+.lbl{padding:8px 12px;font-size:11px;display:flex;justify-content:space-between;border-top:1px solid #ddd}
+.lbl b{font-weight:900}
+</style></head><body>
+<h1>WAVEY™ — LOGO 02 « LIQUID » + CERCLE</h1>
+<p class="sub">4 déclinaisons · lettres liquides, cercle, ™</p>
+<svg width="0" height="0" style="position:absolute"><defs>
+<filter id="wv" x="-10%" y="-40%" width="120%" height="180%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="1" seed="3"/><feDisplacementMap in="SourceGraphic" scale="16"/></filter>
+<filter id="wvr" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="1" seed="8"/><feDisplacementMap in="SourceGraphic" scale="9"/></filter>
+<path id="ring" d="M200 200 m-128 0 a128 128 0 1 1 256 0 a128 128 0 1 1 -256 0"/>
+</defs></svg>
+<div class="grid">
+
+<!-- A: text breaks through ring -->
+<div class="card"><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#fff"/>
+<mask id="mA"><rect width="400" height="400" fill="#fff"/><rect x="20" y="152" width="360" height="96" fill="#000"/></mask>
+<circle cx="200" cy="200" r="150" fill="none" stroke="#111" stroke-width="12" mask="url(#mA)" filter="url(#wvr)"/>
+<text x="200" y="238" text-anchor="middle" font-family="Anton" font-size="104" fill="#111" filter="url(#wv)">WAVEY</text>
+<text x="335" y="170" font-family="Inter" font-weight="900" font-size="15" fill="#111">TM</text></svg>
+<div class="lbl"><b>A · RING BREAK</b><span>Le mot traverse le cercle — recommandé</span></div></div>
+
+<!-- B: text around ring -->
+<div class="card"><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#fff"/>
+<circle cx="200" cy="200" r="168" fill="none" stroke="#111" stroke-width="6"/>
+<circle cx="200" cy="200" r="108" fill="none" stroke="#111" stroke-width="3"/>
+<text font-family="Archivo Black" font-size="22" fill="#111"><textPath href="#ring" textLength="790" lengthAdjust="spacing">RIDE THE WAVE ✦ CULTURE ✦ COMMUNITY ✦ SELF EXPRESSION ✦</textPath></text>
+<text x="200" y="223" text-anchor="middle" font-family="Anton" font-size="66" fill="#111" filter="url(#wv)">WAVEY</text>
+<text x="284" y="180" font-family="Inter" font-weight="900" font-size="11" fill="#111">TM</text></svg>
+<div class="lbl"><b>B · SEAL</b><span>Cercle avec slogan tout autour</span></div></div>
+
+<!-- C: inverted black -->
+<div class="card"><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#0d0d0d"/>
+<circle cx="200" cy="200" r="150" fill="#fff" filter="url(#wvr)"/>
+<text x="200" y="238" text-anchor="middle" font-family="Anton" font-size="96" fill="#0d0d0d" filter="url(#wv)">WAVEY</text>
+<text x="200" y="300" text-anchor="middle" font-family="Inter" font-weight="900" font-size="12" letter-spacing="6" fill="#0d0d0d">EST. 2025</text>
+<text x="322" y="176" font-family="Inter" font-weight="900" font-size="14" fill="#0d0d0d">TM</text></svg>
+<div class="lbl"><b>C · DOT</b><span>Rond plein, fort en sérigraphie dos</span></div></div>
+
+<!-- D: olive patch -->
+<div class="card"><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#4a4f33"/>
+<mask id="mD"><rect width="400" height="400" fill="#fff"/><rect x="20" y="152" width="360" height="96" fill="#000"/></mask>
+<circle cx="200" cy="200" r="150" fill="none" stroke="#efe9d8" stroke-width="12" mask="url(#mD)" filter="url(#wvr)"/>
+<circle cx="200" cy="200" r="132" fill="none" stroke="#efe9d8" stroke-width="2" stroke-dasharray="6 6" mask="url(#mD)"/>
+<text x="200" y="238" text-anchor="middle" font-family="Anton" font-size="104" fill="#efe9d8" filter="url(#wv)">WAVEY</text>
+<text x="335" y="170" font-family="Inter" font-weight="900" font-size="15" fill="#efe9d8">TM</text></svg>
+<div class="lbl"><b>D · PATCH</b><span>Version A en patch brodé couleur camo</span></div></div>
+
+</div></body></html>
