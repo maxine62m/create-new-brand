@@ -1,0 +1,282 @@
+<title>WAVEY Drop 001</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: one-product drop page — marquee, countdown gate, product, details, size guide. Single committed look: concrete grey + electric blue. */
+:root{
+  --concrete:#e4e2dd; --slab:#d6d3cc; --ink:#121214; --mute:#5d5c58;
+  --volt:#1f4dff; --volt-deep:#0b22a8; --paper:#f4f2ec;
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --body:"Archivo",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--volt)}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:1240px;margin:0 auto}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--volt);outline-offset:2px}
+
+/* marquee */
+.ticker{background:var(--volt);color:#fff;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;overflow:hidden;white-space:nowrap}
+.ticker div{display:inline-block;padding-block:8px;animation:run 28s linear infinite}
+.ticker span{margin-right:42px}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--concrete);border-bottom:2px solid var(--ink)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+header img{height:38px;width:auto;display:block}
+.nav{display:flex;gap:18px;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.nav a{text-decoration:none}
+.bagbtn{background:var(--ink);color:#fff;border:0;padding:8px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.1em}
+
+/* gate */
+.gate{border-bottom:2px solid var(--ink)}
+.gate .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding-block:40px}
+.gate h1{font-family:var(--display);font-size:clamp(44px,7.5vw,104px);line-height:.88;margin:0;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
+.gate h1 em{font-style:normal;color:var(--volt)}
+.gate p{max-width:46ch;color:var(--mute);margin:14px 0 0}
+.clock{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px;max-width:460px}
+.clock div{background:var(--ink);color:#fff;padding:12px 6px 8px;text-align:center}
+.clock b{display:block;font-family:var(--display);font-size:clamp(28px,4vw,44px);line-height:1;font-variant-numeric:tabular-nums}
+.clock small{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.notify{display:flex;gap:0;margin-top:18px;max-width:460px}
+.notify input{flex:1;min-width:0;border:2px solid var(--ink);border-right:0;background:var(--paper);padding:12px;font:inherit}
+.notify button{border:2px solid var(--ink);background:var(--volt);color:#fff;padding:0 18px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.msg{font-family:var(--mono);font-size:12px;margin-top:8px;min-height:18px;color:var(--volt-deep)}
+.hero-img{position:relative;aspect-ratio:3/4;max-width:100%;overflow:hidden;background:var(--slab)}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;left:12px;top:12px;background:var(--volt);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:5px 9px;text-transform:uppercase}
+.preview{margin-top:14px;background:none;border:0;padding:0;font-family:var(--mono);font-size:12px;text-decoration:underline;letter-spacing:.06em}
+
+/* product */
+.product .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;padding-block:44px}
+.gallery{display:grid;grid-template-columns:72px 1fr;gap:10px;min-width:0}
+.thumbs{display:flex;flex-direction:column;gap:8px}
+.thumbs button{border:2px solid transparent;padding:0;background:var(--slab);aspect-ratio:1;overflow:hidden}
+.thumbs button[aria-pressed="true"]{border-color:var(--volt)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.main{aspect-ratio:4/5;max-width:100%;background:var(--slab);overflow:hidden}
+.main img{width:100%;height:100%;object-fit:cover;display:block}
+.info{min-width:0;display:flex;flex-direction:column;gap:16px}
+.code{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--mute);text-transform:uppercase}
+.info h2{font-family:var(--display);font-size:clamp(34px,4.6vw,58px);line-height:.9;margin:0;text-transform:uppercase}
+.price{font-family:var(--display);font-size:26px}
+.stock{font-family:var(--mono);font-size:12px}
+.bar{height:8px;background:var(--slab);margin-top:6px}
+.bar i{display:block;height:100%;background:var(--volt);width:49%}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;display:flex;justify-content:space-between}
+.label button{background:none;border:0;padding:0;text-decoration:underline;font-family:var(--mono);font-size:12px}
+.sizes{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.sizes button{border:2px solid var(--ink);background:var(--paper);padding:12px 0;font-family:var(--mono);font-weight:700}
+.sizes button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.sizes button:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.add{border:0;background:var(--volt);color:#fff;padding:18px;font-family:var(--display);font-size:18px;letter-spacing:.04em;text-transform:uppercase}
+.add:hover{background:var(--volt-deep)}
+.add[data-locked="true"]{background:var(--ink)}
+.facts{border-top:2px solid var(--ink)}
+.facts details{border-bottom:1px solid #b9b6ae;padding-block:12px}
+.facts summary{cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;list-style:none;display:flex;justify-content:space-between}
+.facts summary::after{content:"+"}
+.facts details[open] summary::after{content:"–"}
+.facts p,.facts ul{margin:10px 0 0;color:var(--mute);font-size:14px}
+.facts ul{padding-left:18px}
+
+/* close-ups strip */
+.close{background:var(--ink);color:#fff}
+.close .wrap{padding-block:40px}
+.close h3{font-family:var(--display);font-size:clamp(26px,3.6vw,40px);text-transform:uppercase;margin:0 0 18px;line-height:1}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.strip figure{margin:0}
+.strip img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.strip figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-top:8px;opacity:.75}
+
+/* size guide */
+.guide .wrap{padding-block:40px}
+.guide h3{font-family:var(--display);font-size:clamp(26px,3.6vw,40px);text-transform:uppercase;margin:0 0 6px;line-height:1}
+.guide p{color:var(--mute);margin:0 0 16px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;font-variant-numeric:tabular-nums}
+th,td{border:1px solid #b9b6ae;padding:9px 10px;text-align:center;font-size:14px}
+th{font-family:var(--mono);font-size:12px;letter-spacing:.08em;background:var(--slab)}
+td:first-child,th:first-child{text-align:left}
+th.m,td.m{background:var(--volt);color:#fff}
+
+footer{border-top:2px solid var(--ink)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding-block:24px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+footer img{height:30px;width:auto}
+
+/* bag drawer */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(380px,100%);background:var(--paper);border-left:2px solid var(--ink);z-index:20;display:flex;flex-direction:column;padding:calc(18px + env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) 18px;gap:14px;transform:translateX(100%);transition:transform .25s}
+.drawer.open{transform:none}
+.drawer h4{font-family:var(--display);text-transform:uppercase;font-size:24px;margin:0;display:flex;justify-content:space-between;align-items:center}
+.drawer h4 button{background:none;border:0;font-family:var(--mono);font-size:12px;text-decoration:underline}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;font-size:14px}
+.line img{width:64px;height:80px;object-fit:cover}
+.line small{display:block;font-family:var(--mono);font-size:11px;color:var(--mute)}
+.line button{background:none;border:0;font-family:var(--mono);font-size:11px;text-decoration:underline}
+.total{margin-top:auto;border-top:2px solid var(--ink);padding-top:12px;display:flex;justify-content:space-between;font-family:var(--display);font-size:18px}
+.checkout{border:0;background:var(--volt);color:#fff;padding:16px;font-family:var(--display);text-transform:uppercase}
+.note{font-family:var(--mono);font-size:11px;color:var(--mute)}
+.empty{color:var(--mute);font-size:14px}
+
+@media (max-width:820px){
+  .gate .wrap,.product .wrap{grid-template-columns:1fr}
+  .nav{display:none}
+  .gallery{grid-template-columns:1fr}
+  .thumbs{flex-direction:row;order:2}
+  .thumbs button{width:64px}
+  .strip{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){.ticker div{animation:none}.drawer{transition:none}}
+</style>
+
+<div class="ticker" aria-hidden="true"><div id="tick"></div></div>
+
+<header><div class="wrap">
+  <img src="img/logo.png" alt="WAVEY">
+  <nav class="nav"><a href="#product">Drop 001</a><a href="#details">Détails</a><a href="#guide">Tailles</a></nav>
+  <button class="bagbtn" id="bagBtn">Panier (<span id="bagCount">0</span>)</button>
+</div></header>
+
+<section class="gate"><div class="wrap">
+  <div>
+    <div class="code" id="gateCode">Drop 001 · Samedi 21 nov. · 19h00 Paris</div>
+    <h1>Camo<br><em>Fuzzy</em><br>Pant</h1>
+    <p>150 pièces numérotées. Une seule sortie, pas de restock. Inscris-toi pour recevoir l'accès 10 minutes avant tout le monde.</p>
+    <div class="clock" role="timer" aria-label="Temps avant le drop">
+      <div><b id="d">00</b><small>Jours</small></div>
+      <div><b id="h">00</b><small>Heures</small></div>
+      <div><b id="m">00</b><small>Min</small></div>
+      <div><b id="s">00</b><small>Sec</small></div>
+    </div>
+    <form class="notify" id="notify"><label for="email" class="sr" hidden>Email</label>
+      <input id="email" type="email" placeholder="ton@email.com" required>
+      <button type="submit">M'avertir</button></form>
+    <div class="msg" id="msg" aria-live="polite"></div>
+    <button class="preview" id="preview">Aperçu : ouvrir le drop maintenant →</button>
+  </div>
+  <div class="hero-img"><img src="img/pant-full.jpg" alt="Pantalon camouflage en maille poilue, porté"><span class="tag">150 pcs</span></div>
+</div></section>
+
+<section class="product" id="product"><div class="wrap">
+  <div class="gallery">
+    <div class="thumbs" id="thumbs">
+      <button aria-pressed="true" data-src="img/pant-full.jpg" aria-label="Vue portée"><img src="img/pant-full.jpg" alt=""></button>
+      <button aria-pressed="false" data-src="img/detail-fabric.jpg" aria-label="Gros plan matière"><img src="img/detail-fabric.jpg" alt=""></button>
+      <button aria-pressed="false" data-src="img/detail-camo.jpg" aria-label="Gros plan motif"><img src="img/detail-camo.jpg" alt=""></button>
+      <button aria-pressed="false" data-src="img/detail-hem.jpg" aria-label="Gros plan bas de jambe"><img src="img/detail-hem.jpg" alt=""></button>
+    </div>
+    <div class="main"><img id="mainImg" src="img/pant-full.jpg" alt="Pantalon camouflage WAVEY"></div>
+  </div>
+  <div class="info">
+    <div class="code">WV-PT-001 · Olive camo</div>
+    <h2>Camo Fuzzy Pant</h2>
+    <div class="price">120 €</div>
+    <div class="stock"><span id="left">73</span> / 150 restants<div class="bar"><i id="barFill"></i></div></div>
+    <div>
+      <div class="label"><span>Taille</span><button type="button" id="toGuide">Guide des tailles</button></div>
+      <div class="sizes" id="sizes" style="margin-top:8px">
+        <button aria-pressed="false">XS</button><button aria-pressed="false">S</button><button aria-pressed="true">M</button><button aria-pressed="false">L</button><button aria-pressed="false" disabled title="Épuisé">XL</button>
+      </div>
+    </div>
+    <button class="add" id="add" data-locked="true">Disponible le 21.11 à 19h</button>
+    <div class="facts" id="details">
+      <details open><summary>Description</summary><p>Jogging large en maille brossée effet mohair, motif camouflage tricoté. Taille élastique avec cordon olive et œillets métal. Coupe ample, longueur qui casse sur la chaussure.</p></details>
+      <details><summary>Matière &amp; entretien</summary><ul><li>Maille jacquard brossée, poil 8–12 mm</li><li>Doublure jersey noir</li><li>Lavage main ou 30 °C délicat, séchage à plat</li></ul></details>
+      <details><summary>Livraison &amp; retours</summary><ul><li>France : 48–72 h, offerte dès 100 €</li><li>Europe : 3–6 jours</li><li>Retours sous 14 jours</li></ul></details>
+    </div>
+  </div>
+</div></section>
+
+<section class="close"><div class="wrap">
+  <h3>De près</h3>
+  <div class="strip">
+    <figure><img src="img/detail-fabric.jpg" alt="Maille poilue"><figcaption>Maille brossée</figcaption></figure>
+    <figure><img src="img/detail-camo.jpg" alt="Motif camouflage"><figcaption>Camo tricoté</figcaption></figure>
+    <figure><img src="img/detail-hem.jpg" alt="Bas de jambe"><figcaption>Bas qui casse</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="guide" id="guide"><div class="wrap">
+  <h3>Guide des tailles</h3>
+  <p>Mesures à plat, en cm. Le mannequin porte un M.</p>
+  <div class="scroll"><table>
+    <tr><th>Mesure</th><th>XS</th><th>S</th><th class="m">M</th><th>L</th><th>XL</th></tr>
+    <tr><td>½ taille relâchée</td><td>32</td><td>34</td><td class="m">36</td><td>38</td><td>40</td></tr>
+    <tr><td>½ hanches</td><td>52</td><td>54</td><td class="m">56</td><td>58</td><td>60</td></tr>
+    <tr><td>Entrejambe</td><td>80</td><td>81</td><td class="m">82</td><td>83</td><td>84</td></tr>
+    <tr><td>Longueur totale</td><td>111</td><td>113</td><td class="m">115</td><td>117</td><td>119</td></tr>
+    <tr><td>½ bas de jambe</td><td>28</td><td>29</td><td class="m">30</td><td>31</td><td>32</td></tr>
+  </table></div>
+</div></section>
+
+<footer><div class="wrap">
+  <img src="img/logo.png" alt="WAVEY">
+  <span>Instagram · TikTok · Contact</span>
+  <span>© 2026 WAVEY™ — Site de test</span>
+</div></footer>
+
+<aside class="drawer" id="drawer" aria-label="Panier">
+  <h4>Panier <button id="closeBag">Fermer</button></h4>
+  <div id="lines"></div>
+  <div class="total"><span>Total</span><span id="total">0 €</span></div>
+  <button class="checkout" id="checkout">Paiement</button>
+  <div class="note" id="checkNote">Site de test : le paiement n'est pas encore branché.</div>
+</aside>
+
+<script>
+const PRICE=120, DROP=new Date('2026-11-21T19:00:00+01:00');
+const $=id=>document.getElementById(id);
+// ticker
+const t='Drop 001 — Camo Fuzzy Pant — 150 pièces — Pas de restock — Livraison offerte dès 100 € en France — ';
+$('tick').innerHTML=('<span>'+t+'</span>').repeat(6);
+// countdown + lock
+let unlocked=false;
+function tickClock(){
+  let ms=Math.max(0,DROP-new Date());
+  if(ms===0) unlock();
+  const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;
+  [['d',d],['h',h],['m',m],['s',s]].forEach(([k,v])=>$(k).textContent=String(v).padStart(2,'0'));
+}
+tickClock(); setInterval(tickClock,1000);
+function unlock(){
+  if(unlocked) return; unlocked=true;
+  const a=$('add'); a.dataset.locked='false'; a.textContent='Ajouter au panier';
+  $('gateCode').textContent='Drop 001 · En ligne maintenant';
+  $('preview').hidden=true;
+}
+$('preview').onclick=()=>{unlock();$('product').scrollIntoView({behavior:'smooth'})};
+// notify
+$('notify').addEventListener('submit',e=>{e.preventDefault();$('msg').textContent='C\'est noté. Tu recevras l\'accès anticipé à '+$('email').value+'.';$('email').value='';});
+// gallery
+$('thumbs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  [...$('thumbs').children].forEach(x=>x.setAttribute('aria-pressed',x===b));$('mainImg').src=b.dataset.src;});
+// sizes
+let size='M';
+$('sizes').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;
+  [...$('sizes').children].forEach(x=>x.setAttribute('aria-pressed',x===b));size=b.textContent;});
+$('toGuide').onclick=()=>$('guide').scrollIntoView({behavior:'smooth'});
+// stock
+let left=73; const render=()=>{$('left').textContent=left;$('barFill').style.width=(left/150*100)+'%'};render();
+// bag
+let bag=[];
+function drawBag(){
+  $('bagCount').textContent=bag.length;
+  $('lines').innerHTML=bag.length?bag.map((s,i)=>`<div class="line"><img src="img/pant-full.jpg" alt=""><div>Camo Fuzzy Pant<small>Taille ${s} · ${PRICE} €</small></div><button data-i="${i}">Retirer</button></div>`).join(''):'<p class="empty">Ton panier est vide.</p>';
+  $('total').textContent=(bag.length*PRICE)+' €';
+}
+$('lines').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;bag.splice(+b.dataset.i,1);left++;render();drawBag();});
+$('add').onclick=()=>{
+  if(!unlocked){$('add').textContent='Pas encore… rendez-vous le 21.11';setTimeout(()=>{if(!unlocked)$('add').textContent='Disponible le 21.11 à 19h'},1800);return;}
+  if(bag.length>=2){$('add').textContent='Limite : 2 par personne';setTimeout(()=>$('add').textContent='Ajouter au panier',1800);return;}
+  bag.push(size);left--;render();drawBag();$('drawer').classList.add('open');
+};
+$('bagBtn').onclick=()=>{drawBag();$('drawer').classList.add('open')};
+$('closeBag').onclick=()=>$('drawer').classList.remove('open');
+$('checkout').onclick=()=>{$('checkNote').textContent='Paiement non actif sur ce site de test. Ta commande n\'est pas passée.'};
+drawBag();
+</script>
