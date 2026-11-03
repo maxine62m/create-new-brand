@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>WAVEY Bubble Logo</title>
+<link href="https://fonts.googleapis.com/css2?family=Modak&family=Titan+One&family=Shrikhand&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#e9e7e1;font-family:Inter,sans-serif;color:#111}
+h1{font:900 22px Inter;margin:28px 32px 4px;letter-spacing:1px}
+p.sub{margin:0 32px 18px;font-size:12px;color:#555}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 32px 32px}
+.card{border-radius:6px;overflow:hidden;background:#fff}
+.card svg{display:block;width:100%;height:auto}
+.lbl{padding:8px 12px;font-size:11px;display:flex;justify-content:space-between;border-top:1px solid #ddd}
+.lbl b{font-weight:900}
+text{paint-order:stroke fill;stroke-linejoin:round}
+</style></head><body>
+<h1>WAVEY™ — LETTRES BULLE</h1>
+<p class="sub">Typo grosse, grasse, arrondie et penchée · cercle + ™</p>
+<div class="grid">
+
+<!-- A: Modak puffy, ring break -->
+<div class="card"><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#fff"/>
+<mask id="mA"><rect width="400" height="400" fill="#fff"/><rect x="0" y="140" width="400" height="118" fill="#000"/></mask>
+<circle cx="200" cy="200" r="155" fill="none" stroke="#111" stroke-width="12" mask="url(#mA)"/>
+<g transform="rotate(-8 200 200)">
+<text x="200" y="250" text-anchor="middle" font-family="Modak" font-size="104" fill="#111" stroke="#111" stroke-width="12" transform="translate(5 6)">WAVEY</text>
+<text x="200" y="250" text-anchor="middle" font-family="Modak" font-size="104" fill="#fff" stroke="#111" stroke-width="7">WAVEY</text>
+<text x="362" y="176" font-family="Inter" font-weight="900" font-size="15" fill="#111">TM</text></g></svg>
+<div class="lbl"><b>A · PUFFY</b><span>Bulle gonflée blanche contour noir — recommandé</span></div></div>
+
+<!-- B: 3D extrude -->
+<div class="card"><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#fff"/>
+<mask id="mB"><rect width="400" height="400" fill="#fff"/><rect x="0" y="140" width="400" height="118" fill="#000"/></mask>
+<circle cx="200" cy="200" r="155" fill="none" stroke="#111" stroke-width="12" mask="url(#mB)"/>
+<g transform="rotate(-8 200 200)" font-family="Titan One" font-size="80" text-anchor="middle">
+<text x="210" y="248" fill="#111" stroke="#111" stroke-width="12">WAVEY</text>
+<text x="207" y="245" fill="#111" stroke="#111" stroke-width="12">WAVEY</text>
+<text x="204" y="242" fill="#111" stroke="#111" stroke-width="12">WAVEY</text>
+<text x="200" y="238" fill="#111" stroke="#111" stroke-width="12">WAVEY</text>
+<text x="200" y="238" fill="#111" stroke="#fff" stroke-width="4">WAVEY</text>
+<text x="354" y="186" font-family="Inter" font-weight="900" font-size="15" fill="#111" stroke="none" text-anchor="start">TM</text></g></svg>
+<div class="lbl"><b>B · 3D</b><span>Bulle noire en relief, penchée</span></div></div>
+
+<!-- C: Shrikhand on black, chrome-ish -->
+<div class="card"><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#0d0d0d"/>
+<defs><linearGradient id="gC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#cfd3d8"/><stop offset=".55" stop-color="#7d838b"/><stop offset="1" stop-color="#f4f4f4"/></linearGradient></defs>
+<circle cx="200" cy="200" r="160" fill="none" stroke="#fff" stroke-width="5"/>
+<g transform="rotate(-10 200 200)">
+<text x="200" y="232" text-anchor="middle" font-family="Shrikhand" font-size="74" fill="#0d0d0d" stroke="#0d0d0d" stroke-width="22">Wavey</text>
+<text x="200" y="232" text-anchor="middle" font-family="Shrikhand" font-size="74" fill="url(#gC)" stroke="#fff" stroke-width="3">Wavey</text>
+<text x="300" y="178" font-family="Inter" font-weight="900" font-size="14" fill="#fff" stroke="none">TM</text></g></svg>
+<div class="lbl"><b>C · CHROME</b><span>Bulle chromée penchée, style Y2K</span></div></div>
+
+<!-- D: Modak on olive patch -->
+<div class="card"><svg viewBox="0 0 400 400"><rect width="400" height="400" fill="#4a4f33"/>
+<mask id="mD"><rect width="400" height="400" fill="#fff"/><rect x="0" y="140" width="400" height="118" fill="#000"/></mask>
+<circle cx="200" cy="200" r="155" fill="none" stroke="#efe9d8" stroke-width="12" mask="url(#mD)"/>
+<circle cx="200" cy="200" r="138" fill="none" stroke="#efe9d8" stroke-width="2" stroke-dasharray="6 6" mask="url(#mD)"/>
+<g transform="rotate(-8 200 200)">
+<text x="200" y="250" text-anchor="middle" font-family="Modak" font-size="104" fill="#1a1a17" stroke="#1a1a17" stroke-width="12" transform="translate(5 6)">WAVEY</text>
+<text x="200" y="250" text-anchor="middle" font-family="Modak" font-size="104" fill="#efe9d8" stroke="#1a1a17" stroke-width="7">WAVEY</text>
+<text x="362" y="176" font-family="Inter" font-weight="900" font-size="15" fill="#efe9d8" stroke="none">TM</text></g></svg>
+<div class="lbl"><b>D · PATCH</b><span>Version A en patch brodé couleur camo</span></div></div>
+
+</div></body></html>
