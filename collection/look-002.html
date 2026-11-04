@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>WAVEY Look 002</title>
+<link href="https://fonts.googleapis.com/css2?family=Modak&family=Bodoni+Moda:ital,opsz,wght@1,6..96,500&family=Archivo:wdth,wght@100,400;125,600;125,700&display=swap" rel="stylesheet">
+<style>
+:root{--sand:#e8dfcd;--paper:#f3ede1;--ink:#1d1e15;--mute:#6a6853;--line:#cdc2aa;--volt:#1f4dff;--voltd:#0b22a8;--khaki:#5c6040;--ecru:#efe9d8;--sun:#f2c230}
+body{margin:0;background:var(--sand);color:var(--ink);font:14px/1.5 Archivo,sans-serif;width:1600px}
+.lab{font-stretch:125%;font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.it{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:500}
+header{display:flex;justify-content:space-between;align-items:flex-end;padding:44px 56px 20px;border-bottom:1px solid var(--ink)}
+header h1{margin:0;font-family:"Bodoni Moda",serif;font-style:italic;font-weight:500;font-size:76px;line-height:.9}
+header p{margin:8px 0 0;color:var(--mute);max-width:60ch}
+.pal{display:flex;gap:10px}
+.pal div{width:86px}
+.pal i{display:block;height:46px;border:1px solid rgba(0,0,0,.15);margin-bottom:6px}
+.pal span{display:block;font-size:10px;color:var(--mute)}
+main{display:grid;grid-template-columns:.8fr 1fr;gap:0;align-items:start}
+.look{border-right:1px solid var(--line);align-self:stretch;padding:30px 40px;display:flex;flex-direction:column;align-items:center}
+.look svg{width:100%;height:auto}
+.pieces{display:grid;grid-template-columns:1fr 1fr;align-content:start}
+.piece{border-bottom:1px solid var(--line);padding:22px 26px;display:flex;flex-direction:column;gap:8px}
+.piece:nth-child(odd){border-right:1px solid var(--line)}
+.piece svg{width:100%;height:210px;background:var(--paper)}
+.piece h3{margin:0;font-family:"Bodoni Moda",serif;font-style:italic;font-weight:500;font-size:24px;display:flex;justify-content:space-between;align-items:baseline}
+.piece h3 span{font-family:Archivo;font-style:normal;font-stretch:125%;font-weight:700;font-size:13px;letter-spacing:.06em}
+.piece p{margin:0;color:var(--mute);font-size:13px}
+.piece .lab{color:var(--khaki)}
+.notes{grid-column:1/-1;display:flex;flex-direction:column}
+.notes div{padding:22px 26px;border-bottom:1px solid var(--line)}
+.notes b{display:block;font-family:"Bodoni Moda",serif;font-style:italic;font-weight:500;font-size:20px;margin-bottom:4px}
+.notes p{margin:0;color:var(--mute);font-size:13px}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <filter id="fuzz" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="2"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter>
+  <filter id="knit"><feTurbulence type="fractalNoise" baseFrequency="0.5 2.2" numOctaves="1" seed="5"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .18 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+
+  <!-- sweater -->
+  <g id="sweater">
+    <path d="M70 40 Q150 22 230 40 L300 70 L330 230 L292 238 L270 130 L268 250 L32 250 L30 130 L8 238 L-30 230 L0 70 Z" fill="#1f4dff" stroke="#0b22a8" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M70 40 Q150 22 230 40 L300 70 L330 230 L292 238 L270 130 L268 250 L32 250 L30 130 L8 238 L-30 230 L0 70 Z" filter="url(#knit)" fill="#000"/>
+    <path d="M112 34 Q150 62 188 34" fill="none" stroke="#0b22a8" stroke-width="10"/>
+    <path d="M32 236 H268" stroke="#0b22a8" stroke-width="12"/>
+    <path d="M-29 222 L8 230 M292 230 L329 222" stroke="#0b22a8" stroke-width="10"/>
+    <g transform="rotate(-6 150 140) skewX(-14) translate(32 0)">
+      <text x="150" y="168" text-anchor="middle" font-family="Modak" font-size="68" fill="#efe9d8" stroke="#efe9d8" stroke-width="2">WAVEY</text></g>
+    <path d="M286 120 q6 -7 12 0 t12 0 M290 150 q6 -7 12 0 t12 0 M294 180 q6 -7 12 0 t12 0" transform="rotate(10 300 150)" fill="none" stroke="#efe9d8" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <!-- shorts -->
+  <g id="shorts">
+    <path d="M40 10 H220 L240 200 L140 212 L130 90 L120 212 L20 200 Z" fill="#5c6040" stroke="#3c3f27" stroke-width="2.5" stroke-linejoin="round" filter="url(#fuzz)"/>
+    <path d="M40 10 H220 V36 H40 Z" fill="#4e5236" filter="url(#fuzz)"/>
+    <path d="M122 30 C116 60 112 80 110 98 M138 30 C144 60 148 80 150 98" stroke="#efe9d8" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <text x="70" y="168" text-anchor="middle" font-family="Modak" font-size="96" fill="#1f4dff" filter="url(#fuzz)" transform="rotate(-4 70 140)">W</text>
+    <path d="M20 200 L120 212 M140 212 L240 200" stroke="#3c3f27" stroke-width="2" stroke-dasharray="3 4"/>
+  </g>
+  <!-- cap -->
+  <g id="cap">
+    <path d="M40 120 Q40 40 120 30 Q200 40 200 120 Z" fill="#f2c230" stroke="#b58e14" stroke-width="2.5"/>
+    <path d="M120 30 V120 M80 38 Q70 80 72 120 M160 38 Q170 80 168 120" stroke="#b58e14" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/>
+    <circle cx="120" cy="32" r="5" fill="#b58e14"/>
+    <path d="M30 120 Q120 108 210 120 Q240 126 262 150 Q190 140 120 140 Q60 140 30 132 Z" fill="#e8b51f" stroke="#b58e14" stroke-width="2.5"/>
+    <text x="100" y="100" text-anchor="middle" font-family="Modak" font-size="54" fill="#1f4dff" transform="skewX(-12) translate(18 0)">W</text>
+  </g>
+  <!-- socks -->
+  <g id="sock">
+    <path d="M30 10 H80 V120 Q82 150 110 160 L130 168 Q146 176 140 192 Q134 204 112 200 L50 190 Q24 184 28 150 Z" fill="#f6f3ea" stroke="#9a947f" stroke-width="2"/>
+    <path d="M30 14 H80 M30 22 H80 M30 30 H80 M30 38 H80" stroke="#c9c2ad" stroke-width="2"/>
+    <path d="M30 48 H80" stroke="#1f4dff" stroke-width="5"/><path d="M30 58 H80" stroke="#5c6040" stroke-width="5"/>
+    <text x="55" y="104" text-anchor="middle" font-family="Modak" font-size="34" fill="#1f4dff">W</text>
+  </g>
+</defs></svg>
+
+<header>
+  <div><div class="lab" style="color:#5c6040">WAVEY — Drop 002 — Summer in the States</div>
+  <h1>Look 002 · Campus</h1>
+  <p>Inspiration campus US : pull en maille XXL avec gros lettrage, short poilu long comme ton pantalon camo, casquette jaune et chaussettes de sport. Coloré, facile à porter, et fabriqué avec les techniques que ton fournisseur maîtrise déjà.</p></div>
+  <div class="pal">
+    <div><i style="background:#1f4dff"></i><span>Bleu électrique</span></div>
+    <div><i style="background:#5c6040"></i><span>Kaki</span></div>
+    <div><i style="background:#efe9d8"></i><span>Écru</span></div>
+    <div><i style="background:#f2c230"></i><span>Jaune soleil</span></div>
+  </div>
+</header>
+
+<main>
+  <section class="look">
+    <div class="lab" style="align-self:flex-start;color:#5c6040">La tenue complète</div>
+    <svg viewBox="-60 -20 420 760">
+      <rect x="-60" y="-20" width="420" height="760" fill="#f3ede1"/>
+      <g transform="translate(30 -10) scale(1)"><use href="#cap" transform="translate(5 0) scale(.8)"/></g>
+      <g transform="translate(0 120)"><use href="#sweater"/></g>
+      <g transform="translate(20 362)"><use href="#shorts"/></g>
+      <g transform="translate(40 580) scale(.75)"><use href="#sock"/></g>
+      <g transform="translate(260 580) scale(-.75 .75)"><use href="#sock"/></g>
+    </svg>
+  </section>
+
+  <section class="pieces">
+    <div class="piece">
+      <svg viewBox="-50 0 400 270"><use href="#sweater" transform="translate(0 10)"/></svg>
+      <h3>Wave Knit Crewneck <span>89 €</span></h3>
+      <div class="lab">Pull · Bleu électrique / écru</div>
+      <p>Maille épaisse oversize, épaules tombantes, bas et poignets côtelés. Logo WAVEY tricoté en jacquard sur la poitrine, vagues sur la manche. Existe en version crop.</p>
+    </div>
+    <div class="piece">
+      <svg viewBox="-10 -10 280 240"><use href="#shorts"/></svg>
+      <h3>Fuzzy W Short <span>69 €</span></h3>
+      <div class="lab">Short long · Kaki / bleu</div>
+      <p>Même maille poilue que le Camo Fuzzy Pant, coupe longue sous le genou, cordon écru. Gros W tricoté sur la jambe gauche.</p>
+    </div>
+    <div class="piece">
+      <svg viewBox="0 0 280 180"><use href="#cap" transform="translate(10 10)"/></svg>
+      <h3>Sun Cap <span>39 €</span></h3>
+      <div class="lab">Casquette · Jaune soleil / bleu</div>
+      <p>Casquette 6 panneaux en sergé de coton, visière courbée, W brodé en relief. Fermeture réglable à l'arrière.</p>
+    </div>
+    <div class="piece">
+      <svg viewBox="0 0 280 210"><use href="#sock" transform="translate(30 0)"/><use href="#sock" transform="translate(260 0) scale(-1 1) translate(10 0)"/></svg>
+      <h3>Campus Socks <span>15 €</span></h3>
+      <div class="lab">Chaussettes · Écru / bleu / kaki</div>
+      <p>Chaussettes de sport côtelées, rayures bleu et kaki, W tricoté. Petit prix pour compléter le panier.</p>
+    </div>
+    <div class="notes">
+  <div><b>Pourquoi c'est facile à produire</b><p>Pull et short se tricotent sur les mêmes machines jacquard que le pantalon : un seul fournisseur maille. Casquette et chaussettes se commandent en petites séries chez des fabricants spécialisés.</p></div>
+  <div><b>Pourquoi ça peut plaire</b><p>Le gros pull à lettrage, le short poilu et la casquette colorée sont exactement ce qu'on voit sur tes photos d'inspiration. Le look entier coûte 212 €, chaque pièce se vend aussi seule.</p></div>
+  <div><b>À mixer avec le Drop 001</b><p>Le pull bleu se porte avec le Camo Fuzzy Pant pour l'hiver, le short le remplace l'été. La palette kaki / bleu / écru relie les deux drops.</p></div>
+</div>
+  </section>
+</main>
+
+
+</body></html>
