@@ -1,0 +1,182 @@
+<title>WAVEY Look 003</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,500&family=Archivo:wdth,wght@100,400;125,600&display=swap">
+<style>
+/* Layout: full-height 3D stage with a side panel for the pieces and colourways. Single committed look: sand beige studio. */
+:root{--sand:#e8dfcd;--paper:#f3ede1;--ink:#1d1e15;--mute:#6a6853;--line:#cdc2aa;--khaki:#5c6040;
+  --serif:"Bodoni Moda",Didot,Georgia,serif;--sans:"Archivo",Helvetica,Arial,sans-serif;color-scheme:light}
+html,body{height:100%}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5}
+.app{height:100%;display:grid;grid-template-columns:1fr 340px}
+.stage{position:relative;min-height:420px}
+#c{display:block;width:100%;height:100%;cursor:grab}
+#c:active{cursor:grabbing}
+.hint{position:absolute;left:max(16px,env(safe-area-inset-left,0px));bottom:16px;font-stretch:125%;font-weight:600;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.panel{border-left:1px solid var(--line);background:var(--paper);padding-block:28px;padding-left:24px;padding-right:max(24px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:20px;overflow:auto}
+.lab{font-stretch:125%;font-weight:600;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--khaki)}
+h1{font-family:var(--serif);font-style:italic;font-weight:500;font-size:44px;line-height:.95;margin:4px 0 0}
+.piece{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:4px}
+.piece h2{margin:0;font-family:var(--serif);font-style:italic;font-weight:500;font-size:22px;display:flex;justify-content:space-between;align-items:baseline}
+.piece h2 span{font-family:var(--sans);font-style:normal;font-stretch:125%;font-weight:600;font-size:12px}
+.piece p{margin:0;color:var(--mute);font-size:13px}
+.ways{display:flex;gap:8px;flex-wrap:wrap}
+.ways button{display:flex;align-items:center;gap:8px;border:1px solid var(--ink);background:transparent;padding:7px 10px;font:inherit;font-stretch:125%;font-weight:600;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;color:var(--ink)}
+.ways button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.ways i{width:16px;height:16px;display:block;border:1px solid rgba(0,0,0,.25)}
+.row{display:flex;gap:8px}
+.row button{flex:1;border:1px solid var(--ink);background:transparent;padding:9px;font:inherit;font-stretch:125%;font-weight:600;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;color:var(--ink)}
+.note{font-size:12px;color:var(--mute)}
+:focus-visible{outline:2px solid var(--khaki);outline-offset:2px}
+@media (max-width:760px){.app{grid-template-columns:1fr;grid-template-rows:62vh auto;height:auto}.panel{border-left:0;border-top:1px solid var(--line)}}
+</style>
+
+<div class="app">
+  <div class="stage"><canvas id="c" aria-label="Tenue en 3D, glisse pour la faire tourner"></canvas><div class="hint">Glisse pour tourner · molette ou pincement pour zoomer</div></div>
+  <aside class="panel">
+    <div><div class="lab">WAVEY — Look 003 — States</div><h1>Plaid &amp; Black</h1></div>
+    <div class="piece">
+      <h2>Big Plaid Pant <span>79 €</span></h2>
+      <div class="lab">Pantalon oversize à carreaux</div>
+      <p>Jambe très large, taille élastique à cordon, longueur qui s'empile sur la sneaker. Flanelle de coton brossée, carreaux tissés.</p>
+    </div>
+    <div>
+      <div class="lab" style="margin-bottom:8px">Carreaux</div>
+      <div class="ways" id="ways">
+        <button aria-pressed="true" data-way="olive"><i style="background:linear-gradient(90deg,#5c6040 50%,#e8dfcd 50%)"></i>Olive</button>
+        <button aria-pressed="false" data-way="blue"><i style="background:linear-gradient(90deg,#1f4dff 50%,#e8dfcd 50%)"></i>Bleu</button>
+        <button aria-pressed="false" data-way="grey"><i style="background:linear-gradient(90deg,#6f6e6a 50%,#1d1e15 50%)"></i>Gris</button>
+      </div>
+    </div>
+    <div class="piece">
+      <h2>Flow Top <span>49 €</span></h2>
+      <div class="lab">Haut noir fluide</div>
+      <p>Haut ample en viscose satinée noire, manches évasées, bas qui flotte. Se porte rentré dans le pantalon ou par-dessus.</p>
+    </div>
+    <div class="row"><button id="spin" aria-pressed="true">Rotation : on</button><button id="reset">Vue de face</button></div>
+    <p class="note">Modèle 3D de présentation, pas un patron de fabrication. Carreaux dessinés pour WAVEY.</p>
+  </aside>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+const canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+const scene=new THREE.Scene(); scene.background=new THREE.Color('#e8dfcd'); scene.fog=new THREE.Fog('#e8dfcd',4,9);
+const camera=new THREE.PerspectiveCamera(32,1,0.1,50); camera.position.set(0,1.05,3.7);
+const controls=new THREE.OrbitControls(camera,canvas);
+controls.target.set(0,0.9,0); controls.enableDamping=true; controls.minDistance=1.6; controls.maxDistance=6;
+controls.maxPolarAngle=Math.PI*0.53; controls.autoRotate=true; controls.autoRotateSpeed=1.4; controls.enablePan=false;
+
+scene.add(new THREE.HemisphereLight('#fffaf0','#8f8166',0.75));
+const key=new THREE.DirectionalLight('#fff4e2',0.85); key.position.set(2.2,4,2.6); key.castShadow=true;
+key.shadow.mapSize.set(2048,2048); key.shadow.camera.left=-1.5;key.shadow.camera.right=1.5;key.shadow.camera.top=2.2;key.shadow.camera.bottom=-0.5; key.shadow.radius=6;
+scene.add(key);
+const rim=new THREE.DirectionalLight('#dfe6ff',0.45); rim.position.set(-3,2.5,-2.5); scene.add(rim);
+
+const floor=new THREE.Mesh(new THREE.CircleGeometry(4,64),new THREE.ShadowMaterial({opacity:.22}));
+floor.rotation.x=-Math.PI/2; floor.receiveShadow=true; scene.add(floor);
+
+// ---------- plaid texture ----------
+const WAYS={
+  olive:{base:'#5c6040',dark:'#2f321d',light:'#e8dfcd',line:'#1f4dff'},
+  blue:{base:'#1f4dff',dark:'#0b1a6e',light:'#e8dfcd',line:'#f2c230'},
+  grey:{base:'#6f6e6a',dark:'#1d1e15',light:'#d9d4c8',line:'#5c6040'}
+};
+function plaid(w){
+  const c=document.createElement('canvas'); c.width=c.height=512; const g=c.getContext('2d');
+  g.fillStyle=w.base; g.fillRect(0,0,512,512);
+  const band=(pos,size,col,alpha)=>{g.globalAlpha=alpha;g.fillStyle=col;g.fillRect(pos,0,size,512);g.fillRect(0,pos,512,size);};
+  band(0,150,w.dark,.55); band(256,150,w.dark,.55);
+  band(170,46,w.light,.75); band(426,46,w.light,.75);
+  band(112,6,w.line,.7); band(368,6,w.line,.7);
+  band(232,4,w.light,.9); band(488,4,w.light,.9);
+  g.globalAlpha=.08; // twill / brushed flannel texture
+  for(let i=-512;i<512;i+=4){g.strokeStyle=i%8?'#000':'#fff';g.beginPath();g.moveTo(i,0);g.lineTo(i+512,512);g.stroke();}
+  g.globalAlpha=1;
+  const t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=8;
+  return t;
+}
+const pantMat=new THREE.MeshStandardMaterial({roughness:.92,metalness:0,side:THREE.DoubleSide});
+function setWay(k){ if(pantMat.map) pantMat.map.dispose(); const t=plaid(WAYS[k]); t.repeat.set(4,6); pantMat.map=t; pantMat.needsUpdate=true; band.material.color.set(WAYS[k].dark); }
+
+// ---------- helpers ----------
+function lathe(profile,seg){ return new THREE.LatheGeometry(profile.map(([r,y])=>new THREE.Vector2(r,y)),seg||72); }
+function folds(geo,amp,freq,yFn){
+  const p=geo.attributes.position, v=new THREE.Vector3();
+  for(let i=0;i<p.count;i++){ v.fromBufferAttribute(p,i); const a=Math.atan2(v.z,v.x), r=Math.hypot(v.x,v.z);
+    const k=yFn?yFn(v.y):1; const d=1+amp*k*(Math.sin(a*freq+v.y*3.1)*.6+Math.sin(a*(freq+3)-v.y*5.3)*.4);
+    p.setXYZ(i,v.x*d,v.y,v.z*d); }
+  geo.computeVertexNormals(); return geo;
+}
+const skin=new THREE.MeshStandardMaterial({color:'#cdbfae',roughness:.8});
+const add=(geo,mat,x=0,y=0,z=0)=>{const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;scene.add(m);return m;};
+
+// ---------- mannequin ----------
+add(new THREE.SphereGeometry(0.105,40,30),skin,0,1.64,0).scale.set(.92,1.12,1);
+add(new THREE.CylinderGeometry(.045,.055,.13,24),skin,0,1.51,0);
+add(lathe([[0,.98],[.14,.99],[.165,1.1],[.15,1.2],[.17,1.33],[.19,1.43],[.06,1.47],[0,1.47]]),skin);
+
+// ---------- top: black flow ----------
+const topMat=new THREE.MeshStandardMaterial({color:'#0b0b0b',roughness:.42,metalness:.12,side:THREE.DoubleSide});
+const body=folds(lathe([[.06,1.47],[.16,1.455],[.2,1.42],[.205,1.32],[.195,1.2],[.21,1.08],[.24,.98],[.255,.94]],96),.06,7,y=>Math.max(0,(1.25-y))*2.4);
+add(body,topMat);
+// neckline trim
+add(new THREE.TorusGeometry(.075,.008,10,40),topMat,0,1.468,0).rotation.x=Math.PI/2;
+// flared sleeves + forearms/hands
+function arm(side){
+  const g=new THREE.Group(); g.position.set(side*.2,1.41,0); g.rotation.z=side*.14; scene.add(g);
+  const sl=folds(lathe([[.05,0],[.055,-.12],[.065,-.24],[.08,-.34],[.095,-.4]],60),.08,6,y=>Math.max(0,-y)*1.6);
+  const s=new THREE.Mesh(sl,topMat); s.castShadow=true; g.add(s);
+  const fa=new THREE.Mesh(new THREE.CylinderGeometry(.035,.03,.36,20),skin); fa.position.y=-.42; fa.castShadow=true; g.add(fa);
+  const h=new THREE.Mesh(new THREE.SphereGeometry(.04,20,16),skin); h.position.y=-.62; h.scale.set(.8,1.3,.6); g.add(h);
+}
+arm(1); arm(-1);
+
+// ---------- pants: oversize plaid ----------
+const pantsGroup=new THREE.Group(); scene.add(pantsGroup);
+const hips=folds(lathe([[.2,.99],[.22,.93],[.24,.85],[.25,.78],[.24,.72]],96),.025,8);
+const hm=new THREE.Mesh(hips,pantMat); hm.castShadow=true; pantsGroup.add(hm);
+function leg(side){
+  const prof=[[.17,.82],[.165,.62],[.152,.45],[.158,.28],[.17,.14],[.185,.07],[.178,.03],[.15,.012]];
+  const g=folds(lathe(prof,80),.09,5,y=>0.35+Math.max(0,.5-y)*1.6);
+  // stacked folds at the hem
+  const p=g.attributes.position,v=new THREE.Vector3();
+  for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i); if(v.y<.24){const k=1+.06*Math.sin(v.y*95); p.setXYZ(i,v.x*k,v.y,v.z*k);} }
+  g.computeVertexNormals();
+  const m=new THREE.Mesh(g,pantMat); m.position.x=side*.125; m.rotation.z=side*.045; m.position.y=.02; m.castShadow=true; m.receiveShadow=true; pantsGroup.add(m);
+}
+leg(1); leg(-1);
+// crotch filler
+const cr=new THREE.Mesh(new THREE.SphereGeometry(.2,40,24,0,Math.PI*2,0,Math.PI/2),pantMat); cr.scale.set(1.15,.55,.95); cr.rotation.x=Math.PI; cr.position.y=.74; pantsGroup.add(cr);
+// waistband + drawcord
+const band=new THREE.Mesh(new THREE.CylinderGeometry(.205,.205,.05,72,1,true),new THREE.MeshStandardMaterial({color:'#2f321d',roughness:.9,side:THREE.DoubleSide}));
+band.position.y=.975; band.castShadow=true; scene.add(band);
+const cordMat=new THREE.MeshStandardMaterial({color:'#efe9d8',roughness:.7});
+[[-.03,-.05],[.03,.05]].forEach(([x,dx])=>{const c=new THREE.Mesh(new THREE.CylinderGeometry(.006,.006,.2,8),cordMat);c.position.set(x+dx*.3,.88,.21);c.rotation.z=dx*1.2;scene.add(c);});
+
+// ---------- sneakers ----------
+function shoe(side){
+  const g=new THREE.Group(); g.position.set(side*.165,0,.06); scene.add(g);
+  const sole=new THREE.Mesh(new THREE.BoxGeometry(.11,.03,.29),new THREE.MeshStandardMaterial({color:'#f4f1ea',roughness:.6})); sole.position.y=.015; g.add(sole);
+  const up=new THREE.Mesh(new THREE.SphereGeometry(.07,24,16,0,Math.PI*2,0,Math.PI/2),new THREE.MeshStandardMaterial({color:'#1f4dff',roughness:.55}));
+  up.scale.set(.8,.9,2); up.position.set(0,.03,.04); g.add(up); g.children.forEach(c=>c.castShadow=true);
+}
+shoe(1); shoe(-1);
+
+setWay('olive');
+
+// ---------- UI ----------
+document.getElementById('ways').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  [...e.currentTarget.children].forEach(x=>x.setAttribute('aria-pressed',x===b)); setWay(b.dataset.way);});
+const spin=document.getElementById('spin');
+spin.onclick=()=>{controls.autoRotate=!controls.autoRotate; spin.setAttribute('aria-pressed',controls.autoRotate); spin.textContent='Rotation : '+(controls.autoRotate?'on':'off');};
+document.getElementById('reset').onclick=()=>{camera.position.set(0,1.05,3.7);controls.target.set(0,.9,0);};
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){controls.autoRotate=false;spin.setAttribute('aria-pressed','false');spin.textContent='Rotation : off';}
+
+function resize(){const r=canvas.parentElement.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}
+new ResizeObserver(resize).observe(canvas.parentElement); resize();
+(function loop(){requestAnimationFrame(loop);controls.update();renderer.render(scene,camera);})();
+</script>
